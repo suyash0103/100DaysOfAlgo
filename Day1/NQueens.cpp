@@ -4,9 +4,6 @@ using namespace std;
 
 typedef long long int ll;
 
-//int diag1 = 0;
-//int diag2 = 0;
-
 set<int> diag1;
 set<int> diag2;
 
@@ -15,6 +12,8 @@ bool canInsert(vector<vector<int> >& v, int row, int col)
 	int i = col - 1;
 	int j = 0;
 	
+//	cout << row << " " << col << endl;
+	
 	while(i >= 0)
 	{
 		if(v[row][i] == 1)
@@ -22,18 +21,12 @@ bool canInsert(vector<vector<int> >& v, int row, int col)
 		i--;
 	}
 	
-//	if(diag1.find(abs(row - col)) != diag1.end() || diag2.find(row + col) != diag2.end())
-//	{
-//		return false;
-//	}
-//	
-//	return true;
+	if(diag1.find(row - col) != diag1.end() || diag2.find(row + col) != diag2.end())
+	{
+		return false;
+	}
 	
-//	if(row == col && diag1 == 1)
-//		return false;
-//	else if(row + col + 1 == v.size() && diag2 == 1)
-//		return false;
-//	return true;
+	return true;
 	
 	i = col - 1;
 	j = row - 1;
@@ -77,16 +70,16 @@ bool fill(vector<vector<int> >& v, int row, int col)
 		if(canInsert(v, i, col))
 		{
 			v[i][col] = 1;
-//			diag1.insert(abs(i - col));
-//			diag2.insert(i + col);
+			diag1.insert(i - col);
+			diag2.insert(i + col);
 			
 			if(fill(v, row, col + 1) == true)
 			{
 				return true;
 			}
 			v[i][col] = 0;
-//			diag1.erase(abs(i - col));
-//			diag2.erase(i + col);
+			diag1.erase(i - col);
+			diag2.erase(i + col);
 		}
 	}
 	
