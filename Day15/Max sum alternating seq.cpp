@@ -12,7 +12,7 @@ int main()
 		cin >> v[i];
 	
 	vector<int> lis(n, 1);
-	vector<vector<int> > sum(n, vector<int>(2, 1));
+	vector<vector<int> > sum(n, vector<int>(2, 0));
 	
 	for(int i = 1; i < n; i++)
 	{
