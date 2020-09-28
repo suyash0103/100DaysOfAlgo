@@ -14,18 +14,27 @@ int find(vector<int>& v, int i, int k, int sum, int prev)
 	if(k == 0)
 	{
 		ans = min(ans, sum);
+		if(ans == 39)
+		{
+			cout << "A " << i << " " << k << endl;
+		}
 		return ans;
 	}
 	
-	if(i < 0)
-	{
-		return INT_MAX;
-	}
+//	if(i < 0)
+//	{
+//		return INT_MAX;
+//	}
 	
 //	if(mp.find({i, k}) != mp.end())
 //	{
 //		return mp[{i, k}];
 //	}
+	
+	if(i < 0)
+	{
+		return INT_MAX;
+	}
 	
 	int a = INT_MAX;
 	if(v[i] <= prev)
@@ -35,6 +44,10 @@ int find(vector<int>& v, int i, int k, int sum, int prev)
 	a = min(a, find(v, i - 1, k, sum, prev));
 	dp[i][k] = min(dp[i][k], a);
 	mp[{i, k}] = a;
+	if(a == 39)
+	{
+		cout << "b";
+	}
 	return a;
 //	return dp[i][k];
 }
