@@ -6,7 +6,7 @@ map<int, char> mp;
 
 set<string> st;
 
-void find(string s, string newstr, int i)
+int find(string s, string newstr, int i)
 {
     // cout << newstr << endl;
 	if(i >= s.length())
@@ -14,11 +14,14 @@ void find(string s, string newstr, int i)
 	   // cout << newstr;
 		if(st.find(newstr) == st.end())
 		{
+			st.insert(newstr);
 			cout << newstr << endl;
+			return 1;
 		}
-		st.insert(newstr);
-		return;
+		return 0;
 	}
+	
+	int a = 0;
 	
 	if(i + 1 < s.length())
 	{
@@ -32,7 +35,7 @@ void find(string s, string newstr, int i)
 			string n = newstr;
 			n.push_back(mp[t]);
 // 			cout << n << endl;
-			find(s, n, i + 2);
+			a += find(s, n, i + 2);
 		}
 	}
 	
@@ -43,7 +46,9 @@ void find(string s, string newstr, int i)
 	n.push_back(mp[a]);
 // 	cout << n << endl;
 // 	cout << a << endl;
-	find(s, n, i + 1);
+	a += find(s, n, i + 1);
+	
+	return a;
 }
 
 int main()
