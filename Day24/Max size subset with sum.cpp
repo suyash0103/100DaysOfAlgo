@@ -4,6 +4,8 @@ using namespace std;
 
 int ans = 0;
 
+vector<vector<int> > dp(100, vector<int>(100, -1));
+
 int find(vector<int>& v, int n, int i, int sz, int sum)
 {
 	if(sum == 0)
@@ -22,10 +24,17 @@ int find(vector<int>& v, int n, int i, int sz, int sum)
 		return 0;
 	}
 	
+	if(dp[i][sum] != -1)
+	{
+		return dp[i][sum];
+	}
+	
 	int a = 0;
 	
 	a = max(a, find(v, n, i + 1, sz, sum));
 	a = max(a, find(v, n, i + 1, sz + 1, sum - v[i]));
+	
+	dp[i][sum] = a;
 	
 	return a;
 }
@@ -43,5 +52,5 @@ int main()
 	cin >> sum;
 	
 	cout << find(v, n, 0, 0, sum) << endl;
-	cout << ans;
+//	cout << ans;
 }
