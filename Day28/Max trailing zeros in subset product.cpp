@@ -59,5 +59,5 @@ int main()
 		cin >> v[i];
 	
 	cout << find(v, 0, k, 1) << endl;
-	cout << ans;
+//	cout << ans;
 }
