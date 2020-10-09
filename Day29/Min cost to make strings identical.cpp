@@ -10,6 +10,13 @@ int ans = INT_MAX;
 //{
 //	cout << i << " " << j << " " << sum << endl;
 //	
+//	if(dp[i][j] != INT_MAX)
+//	{
+//		dp[i][j] = min(dp[i][j], sum);
+//	}
+//	
+////	dp[i][j] = min(dp[i][j], sum);
+//	
 //	if(i == 0 && j == 0)
 //	{
 //		ans = min(ans, sum);
@@ -33,11 +40,11 @@ int ans = INT_MAX;
 //		return sum;
 //	}
 //	
-////	if(dp[i][j] != INT_MAX)
-////	{
-//////		dp[i][j] = min(dp[i][j], sum);
-////		return dp[i][j];
-////	}
+//	if(dp[i][j] != INT_MAX)
+//	{
+////		dp[i][j] = min(dp[i][j], sum);
+//		return dp[i][j];
+//	}
 //	
 //	int a = INT_MAX;
 //	
