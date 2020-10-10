@@ -4,6 +4,8 @@ using namespace std;
 
 int ans = 0;
 
+map<pair<int, vector<int> >, int > mp;
+
 bool sorted(vector<int>& sort)
 {
 	for(int i = 1; i < sort.size(); i++)
@@ -16,7 +18,7 @@ bool sorted(vector<int>& sort)
 	return true;
 }
 
-void find(vector<int>& v, int i, vector<int>& sort)
+int find(vector<int>& v, int i, vector<int>& sort)
 {
 //	cout << i << endl;
 	if(i == v.size())
@@ -25,14 +27,26 @@ void find(vector<int>& v, int i, vector<int>& sort)
 		{
 			int n = sort.size();
 			ans = max(ans, n);
+			return ans;
 		}
-		return;
+		return 0;
 	}
 	
+	if(mp.find({i, sort}) != mp.end())
+	{
+		return mp[{i, sort}];
+	}
+	
+	int a = 0;
+	
 	sort.push_back(v[i]);
-	find(v, i + 1, sort);
+	a = find(v, i + 1, sort);
 	sort.pop_back();
-	find(v, i + 1, sort);
+	a = max(a, find(v, i + 1, sort));
+	
+	mp[{i, sort}] = a;
+	
+	return a;
 }
 
 int main()
@@ -47,6 +61,6 @@ int main()
 	set<int> st;
 	vector<int> sort;
 	
-	find(v, 0, sort);
+	cout << find(v, 0, sort) << endl;
 	cout << v.size() - ans;
 }
