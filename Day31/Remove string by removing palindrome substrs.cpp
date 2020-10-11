@@ -4,6 +4,8 @@ using namespace std;
 
 int ans = INT_MAX;
 
+map<pair<string, int>, int> mp;
+
 int palin(string s, int i, int& l, int& r)
 {
 	int len = 1;
@@ -39,8 +41,11 @@ int palin(string s, int i, int& l, int& r)
 	return len;
 }
 
+int times = 0;
+
 int find(string s, int i, int t)
 {
+	times++;
 //	cout << i << " " << t << endl;
 	if(s.length() == 0)
 	{
@@ -53,6 +58,13 @@ int find(string s, int i, int t)
 		return INT_MAX;
 	}
 	
+	if(mp.find({s, i}) != mp.end())
+	{
+		return mp[{s, i}];
+	}
+	
+	int a = INT_MAX;
+	
 	int left = i - 1, right = i + 1;
 	int x = palin(s, i, left, right);
 	if(x != 1)
@@ -62,12 +74,16 @@ int find(string s, int i, int t)
 		
 		string scopy = s.substr(0, left);
 		scopy += s.substr(right + 1);
-		find(scopy, 0, t + 1);
+		a = min(a, find(scopy, 0, t + 1));
 	}
-	find(s, i + 1, t);
+	a = min(a, find(s, i + 1, t));
 	string scopy = s.substr(0, i);
 	scopy += s.substr(i + 1);
-	find(scopy, 0, t + 1);
+	a = min(a, find(scopy, 0, t + 1));
+	
+	mp[{s, i}] = a;
+	
+	return a;
 }
 
 int main()
@@ -75,6 +91,8 @@ int main()
 	string s;
 	cin >> s;
 	
-	find(s, 0, 0);
-	cout << ans;
+	cout << find(s, 0, 0) << endl;
+	cout << ans << endl;
+	
+	cout << "times: " << times;
 }
