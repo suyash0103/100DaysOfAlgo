@@ -16,6 +16,7 @@ int find(string s1, string s2, int i, int j, int sum)
 	
 	int a = -1;
 	
+	
 	if(s1[i] == s2[j])
 	{
 		a = max(a, find(s1, s2, i + 1, j + 1, sum + 1));
