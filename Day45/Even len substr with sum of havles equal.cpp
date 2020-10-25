@@ -7,9 +7,7 @@ int main()
 	string s;
 	cin >> s;
 	
-//	vector<vector<int> > dp()
 	int ans = 0;
-	map<int, set<pair<int, int> > > mp;
 	map<pair<int, int>, int> m;
 	
 	for(int i = 0; i < s.length(); i++)
