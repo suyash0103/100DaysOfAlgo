@@ -5,7 +5,9 @@ using namespace std;
 int ans = 0;
 vector<vector<int> > g(10);
 
-int find(set<int>& st, int n, int prev)
+vector<vector<int> > dp(100, vector<int>(100, -1));
+
+int find(int n, int prev)
 {
 	if(n == 0)
 	{
@@ -13,17 +15,21 @@ int find(set<int>& st, int n, int prev)
 		return 1;
 	}
 	
+	if(dp[n][prev] != -1)
+	{
+		return dp[n][prev];
+	}
+	
 	int a = 0;
 	
 	for(int i = 0; i < g[prev].size(); i++)
 	{
-//		if(st.find(g[prev][i]) == st.end())
-//		{
-			st.insert(g[prev][i]);
-			a += find(st, n - 1, g[prev][i]);
-			st.erase(g[prev][i]);
-//		}
+//		st.insert(g[prev][i]);
+		a += find(n - 1, g[prev][i]);
+//		st.erase(g[prev][i]);
 	}
+	
+	dp[n][prev] = a;
 	
 	return a;
 }
@@ -67,7 +73,7 @@ int main()
 	{
 		set<int> st;
 		st.insert(i);
-		int c = find(st, n - 1, i);
+		int c = find(n - 1, i);
 		cout << i << ": " << c << endl;
 		a += c;
 		st.erase(i);
