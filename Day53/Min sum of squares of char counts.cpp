@@ -18,7 +18,7 @@ int main()
 	int k;
 	cin >> k;
 	
-	priority_queue<pair<char, int>, vector<pair<char, int>, comp > pq;
+	priority_queue<pair<char, int>, vector<pair<char, int> >, comp > pq;
 	
 	map<char, int> mp;
 	for(int i = 0; i < s.length(); i++)
