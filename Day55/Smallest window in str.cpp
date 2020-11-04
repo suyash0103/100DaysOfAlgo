@@ -29,7 +29,7 @@ int main()
         mp[s1[end]]++;
         if(st.find(s1[end]) != st.end())
         {
-            s.insert(s1[end]);
+            s.insert(s1[end]); 
         }
         while(s.size() == st.size() && start <= end)
         {
