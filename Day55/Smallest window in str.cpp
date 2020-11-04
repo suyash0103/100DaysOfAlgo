@@ -33,7 +33,7 @@ int main()
         }
         while(s.size() == st.size() && start <= end)
         {
-            ans = min(ans, end - start + 1);
+            ans = min(ans, end - start  + 1);
             mp[s1[start]]--;
             if(mp[s1[start]] == 0)
             {
