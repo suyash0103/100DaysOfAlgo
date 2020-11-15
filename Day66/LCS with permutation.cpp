@@ -19,7 +19,7 @@ int main()
 
     for(int i = 0; i < s2.length(); i++)
     {
-        mp1[s2[i]]++;
+        mp2[s2[i]]++;
     }
 
     string ans = "";
@@ -36,4 +36,6 @@ int main()
     }
 
     sort(ans.begin(), ans.end());
+
+    cout << "HERE: " << ans;
 }
