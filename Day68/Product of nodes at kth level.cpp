@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stack>
 
 using namespace std;
 
@@ -13,8 +12,6 @@ int main()
 
     int ans = 1;
     int l = -1;
-
-    stack<char> st;
 
     for(int i = 0; i < s.length(); i++)
     {
