@@ -44,19 +44,19 @@ int main()
         z++;
     }
 
-    cout << endl;
-    for(int i = 0; i < v.size(); i++)
-    {
-        cout << v[i] << endl;
-    }
-    cout << endl;
+    // cout << endl;
+    // for(int i = 0; i < v.size(); i++)
+    // {
+    //     cout << v[i] << endl;
+    // }
+    // cout << endl;
 
     string sum1 = v[0];
     for(int i = 1; i < v.size(); i++)
     {
         string sum2 = v[i];
 
-        cout << sum1 << " " << sum2 << endl;
+        // cout << sum1 << " " << sum2 << endl;
 
         int j = sum1.length() - 1;
         int k = sum2.length() - 1;
@@ -66,7 +66,6 @@ int main()
         int c = 0;
         while(j >= 0 && k >= 0)
         {
-            // cout << j << " " << k << endl;
             int d1 = sum1[j] - '0';
             int d2 = sum2[k] - '0';
 
@@ -87,7 +86,7 @@ int main()
         while(k >= 0)
         {
             int d = sum2[k] - '0';
-            d += c;
+            // d += c;
 
             int add = d + c;
             int units = add % 10;
@@ -101,7 +100,7 @@ int main()
         while(j >= 0)
         {
             int d = sum1[j] - '0';
-            d += c;
+            // d += c;
 
             int add = d + c;
             int units = add % 10;
@@ -118,7 +117,9 @@ int main()
         }
 
         reverse(temp.begin(), temp.end());
-        cout << "Temp: " << temp << endl;
+        // cout << "Temp: " << temp << endl;
         sum1 = temp;
     }
+
+    cout << sum1 << endl;
 }
