@@ -39,6 +39,7 @@ int main()
     int ans = 0;
     for(int i = 0; i < n; i++)
     {
+        
         if(vis[i] == 0)
         {
             dfs(g, vis, i);
