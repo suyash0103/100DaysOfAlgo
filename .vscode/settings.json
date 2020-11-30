@@ -4,6 +4,7 @@
         "*.tcc": "cpp",
         "list": "cpp",
         "random": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "utility": "cpp"
     }
 }
